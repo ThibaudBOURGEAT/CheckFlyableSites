@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const db = require('../../../config');
 const timer = 2 * 60 * 60 * 1000;
 
-const getWheaterData = function(){
+const getWeatherData = function(){
     db.query('SELECT * FROM sites',function(err,sites){
         var countRequest = 0;
         sites.forEach(async function(site){
@@ -65,6 +65,6 @@ router.get('/getFlyable/:lon/:lat', function(req,res){
          });
 });
 
-setInterval(getWheaterData, timer, 'meteo');
+setInterval(getWeatherData, timer, 'meteo');
 
 module.exports = router;
